@@ -9,8 +9,10 @@ public class ValidationTypeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tipo_validacion_id")
     private long validationTypeId;
+
     @Column(name = "nombre_tipo_validacion")
     private String validationTypeName;
+    
     @Column(name = "descripcion")
     private String description;
 

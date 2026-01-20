@@ -13,8 +13,7 @@ public class FileManagementUseCase implements FileManagementPort {
     private final FileManagementOutPort fileManagementOutPort;
     private final FileMapper fileMapper;
 
-    public FileManagementUseCase(FileManagementOutPort fileManagementOutPort,
-                                 FileMapper fileMapper) {
+    public FileManagementUseCase(FileManagementOutPort fileManagementOutPort, FileMapper fileMapper) {
         this.fileManagementOutPort = fileManagementOutPort;
         this.fileMapper = fileMapper;
     }

@@ -11,13 +11,13 @@ public class ApplicationRecognizedEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "solicitud_reconocida_id")
     private Long applicationRecognizedId;
-    @Column(name = "titulo_trabajo", columnDefinition = "TEXT", nullable = false)
+    @Column(name = "titulo_trabajo", nullable = false)
     private String title;
-    @Column(name = "nombre_resolucion", columnDefinition = "TEXT", nullable = true)
+    @Column(name = "nombre_resolucion", nullable = true)
     private String resolutionName;
-    @Column(name = "fecha", columnDefinition = "TIMESTAMP", nullable = false)
+    @Column(name = "fecha", nullable = false)
     private LocalDateTime date;
-    @Column(name = "autores", columnDefinition = "TEXT", nullable = false)
+    @Column(name = "autores", nullable = false)
     private String authors;
     //Relacion debil con solicitud que representa la solicitud relacionada
     @Column(name = "solicitud_id", nullable = false)

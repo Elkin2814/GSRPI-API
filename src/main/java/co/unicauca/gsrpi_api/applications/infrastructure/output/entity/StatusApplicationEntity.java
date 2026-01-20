@@ -9,8 +9,10 @@ public class StatusApplicationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "estado_solicitud_id")
     private Long statusApplicationId;
+
     @Column(name = "nombre", columnDefinition = "TEXT", nullable = false)
     private String name;
+    
     @Column(name = "descripcion", columnDefinition = "TEXT", nullable = true)
     private String description;
 

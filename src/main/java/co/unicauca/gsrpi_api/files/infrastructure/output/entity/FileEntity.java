@@ -21,13 +21,13 @@ public class FileEntity {
     private String path;
     @Column(name = "observaciones", columnDefinition = "TEXT", nullable = true)
     private String observations;
-    @Column(name = "tamanio", columnDefinition = "BIGINT", nullable = false)
+    @Column(name = "tamanio", nullable = false)
     private Long size;
-    @Column(name = "estado", columnDefinition = "BOOLEAN", nullable = false)
+    @Column(name = "estado", nullable = false)
     private Boolean state; //true: activo, false: inactivo
-    @Column(name = "fecha_creacion", columnDefinition = "TIMESTAMP", nullable = false)
+    @Column(name = "fecha_creacion", nullable = false)
     private LocalDateTime createAt;
-    @Column(name = "fecha_actualizacion", columnDefinition = "TIMESTAMP", nullable = true)
+    @Column(name = "fecha_actualizacion", nullable = true)
     private LocalDateTime updateAt;
 
     public FileEntity() {

@@ -9,8 +9,10 @@ public class DepartmentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "departamento_id")
     private long departmentId;
+
     @Column(name = "nombre", columnDefinition = "TEXT", nullable = false)
     private String name;
+    
     @Column(name = "ubicacion",columnDefinition = "TEXT", nullable = true)
     private String location;
 

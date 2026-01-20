@@ -9,10 +9,13 @@ public class ProductionFileEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "produccion_archivo_id")
     private Long productionFileId;
+
     @Column(name = "archivo_id", nullable = false)
     private Long fileId; //En tabla archivo debe ser tipo UUID
+
     @Column(name = "nombre", columnDefinition = "TEXT", nullable = false)
     private String name;
+    
     //Relacion many to one con produccion
     @ManyToOne
     @JoinColumn(name = "produccion_id", nullable = false)

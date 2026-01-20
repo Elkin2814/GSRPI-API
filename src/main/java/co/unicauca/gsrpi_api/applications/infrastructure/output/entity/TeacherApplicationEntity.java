@@ -9,18 +9,23 @@ public class TeacherApplicationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "docente_solicitud_id")
     private Long teacherApplicationId;
+
     @Column(name = "tipo_docente_solicitante",columnDefinition = "TEXT", nullable = false)
     private String typeOfRequestingTeacher; //Valores de primario y secundario
-    @Column(name = "puntos_recomendados", columnDefinition = "DOUBLE PRECISION", nullable = true)
+
+    @Column(name = "puntos_recomendados", nullable = true)
     private Double recommendedPoints;
-    @Column(name = "puntos_asignados", columnDefinition = "DOUBLE PRECISION", nullable = true)
+
+    @Column(name = "puntos_asignados", nullable = true)
     private Double assignedPoints;
+
     //Relacion many to one con docente
     @ManyToOne
     @JoinColumn(name = "docente_id", nullable = false)
     private TeacherEntity teacher;
+
     //Relacion many to one con solicitud
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "solicitud_id", nullable = false)
     private ApplicationEntity application;
 

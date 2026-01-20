@@ -12,13 +12,17 @@ public class TeacherEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "docente_id")
     private Long teacherId;
+
     @Column(name = "estado", columnDefinition = "TEXT", nullable = true)
     private String state;
+
     @Column(name = "tipo_vinculacion", columnDefinition = "TEXT", nullable = false)
     private String typeOfLinkage;
+
     //Relacion debil con departamento
     @Column(name = "departamento_id", nullable = false)
     private long departmentId;
+    
     //Relacion one to one con persona
     @OneToOne
     @JoinColumn(name = "persona_id", nullable = false)

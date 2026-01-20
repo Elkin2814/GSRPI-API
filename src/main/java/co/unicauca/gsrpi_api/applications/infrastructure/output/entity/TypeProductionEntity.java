@@ -1,6 +1,8 @@
 package co.unicauca.gsrpi_api.applications.infrastructure.output.entity;
 
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import com.vladmihalcea.hibernate.type.json.JsonType;
+
 import jakarta.persistence.*;
 import org.hibernate.annotations.Type;
 
@@ -11,15 +13,19 @@ public class TypeProductionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tipo_pruduccion_id")
     private Long typeProductionId;
+
     @Column(name = "nombre", columnDefinition = "TEXT", nullable = false)
     private String name;
-    @Column(name = "estructura_json", columnDefinition = "jsonb", nullable = false)
-    @Type(JsonBinaryType.class)
+
+    @Column(name = "estructura_json", columnDefinition = "json", nullable = false)
+    @Type(JsonType.class)
     private String jsonStructure;
+
     @Column(name = "alias", columnDefinition = "TEXT", nullable = false, unique = true)
     private String alias;
-    @Column(name = "calalogos_ids", columnDefinition = "jsonb", nullable = true)
-    @Type(JsonBinaryType.class)
+
+    @Column(name = "calalogos_ids", columnDefinition = "json", nullable = true)
+    @Type(JsonType.class)
     private String catalogsIds;
 
     public TypeProductionEntity() {

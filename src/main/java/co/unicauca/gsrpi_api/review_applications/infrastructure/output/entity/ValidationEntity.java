@@ -13,24 +13,31 @@ public class ValidationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "validacion_id")
     private long validationId;
-    @Column(name = "estado_validacion", columnDefinition = "BOOLEAN", nullable = false)
+    
+    @Column(name = "estado_validacion", nullable = false)
     private Boolean validationState;
+
     @Column(name = "observaciones", columnDefinition = "TEXT")
     private String observations;
-    @Column(name = "fecha_creacion", columnDefinition = "TIMESTAMPTZ", nullable = false)
+
+    @Column(name = "fecha_creacion", nullable = false)
     private LocalDateTime createAt;
-    @Column(name = "fecha_actualizacion", columnDefinition = "TIMESTAMPTZ", nullable = true)
+
+    @Column(name = "fecha_actualizacion", nullable = true)
     private LocalDateTime updateAt;
+
     //Relacion muchos a uno con la tabla application
     @ManyToOne
     @JoinColumn(name = "solicitud_id", nullable = false)
     private ApplicationEntity application;
+
     //Relacion de muchos a uno con la tabla validationType
     @ManyToOne
     @JoinColumn(name = "tipo_validacion_id", nullable = false)
     private ValidationTypeEntity validationType;
+
     //Relacion de muchos a uno con la tabla person
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "persona_id", nullable = false)
     private PersonEntity person;
 

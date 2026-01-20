@@ -1,6 +1,8 @@
 package co.unicauca.gsrpi_api.applications.infrastructure.output.entity;
 
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import com.vladmihalcea.hibernate.type.json.JsonType;
+
 import jakarta.persistence.*;
 import org.hibernate.annotations.Type;
 
@@ -11,37 +13,52 @@ public class ApplicationTempEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "solicitud_temporal_id")
     private Long applicationTempId;
+
     @Column(name = "docente_id")
     private Long teacherId;
+
     @Column(name = "solicitud_descripcion", columnDefinition = "TEXT")
     private String description;
+  
     @Column(name = "solicitud_numero_autores", columnDefinition = "SMALLINT")
     private int numberOfAuthors;
-    @Column(name = "solicitud_terminos_condiciones", columnDefinition = "BOOLEAN")
+    
+    @Column(name = "solicitud_terminos_condiciones")
     private boolean termsAndConditions;
+    
     @Column(name= "departamento_id")
     private Long departmentId;
+    
     @Column(name = "tipo_solicitd_cat_id")
     private Long applicationTypeCatId;
+    
     @Column(name = "produccion_titulo_trabajo", columnDefinition = "TEXT")
     private String productionTitle;
+    
     @Column(name = "produccion_area_disciplinar", columnDefinition = "TEXT")
     private String productionDisciplinaryArea;
+    
     @Column(name = "produccion_numero_folios", columnDefinition = "SMALLINT")
     private int productionNumberOfPages;
+    
     @Column(name = "produccion_pagina_inicio", columnDefinition = "SMALLINT")
     private int productionStartPage;
+    
     @Column(name = "produccion_pagina_final", columnDefinition = "SMALLINT")
     private int productionEndPage;
+    
     @Column(name = "produccion_observaciones", columnDefinition = "TEXT")
     private String productionObservations;
+    
     @Column(name = "tipo_produccion_id")
     private Long productionTypeId;
-    @Column(name = "produccion_json_datos", columnDefinition = "JSONB")
-    @Type(JsonBinaryType.class)
+    
+    @Column(name = "produccion_json_datos", columnDefinition = "JSON")
+    @Type(JsonType.class)
     private String productionJsonData;
-    @Column(name = "produccion_mecanismos_pubicacion_cat_id", columnDefinition = "JSONB")
-    @Type(JsonBinaryType.class)
+
+    @Column(name = "produccion_mecanismos_pubicacion_cat_id", columnDefinition = "JSON")
+    @Type(JsonType.class)
     private String productionPublicationMechanisms; //Se guardara un json porque es un checkbox
 
     public ApplicationTempEntity() {

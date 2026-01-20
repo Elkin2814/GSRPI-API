@@ -1,6 +1,8 @@
 package co.unicauca.gsrpi_api.applications.infrastructure.output.entity;
 
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import com.vladmihalcea.hibernate.type.json.JsonType;
+
 import jakarta.persistence.*;
 import org.hibernate.annotations.Type;
 
@@ -13,25 +15,34 @@ public class ProductionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "produccion_id")
     private Long productionId;
+    
     @Column(name = "titulo_trabajo", columnDefinition = "TEXT", nullable = false)
     private String workTitle;
+
     @Column(name = "area_disciplinar", columnDefinition = "TEXT", nullable = true)
     private String disciplinaryArea;
+
     @Column(name = "numero_folios", nullable = true)
     private Integer numberOfPages;
+
     @Column(name = "pagina_inicio", nullable = true)
     private Integer startPage;
+
     @Column(name = "pagina_fin", nullable = true)
     private Integer endPage;
+
     @Column(name = "observaciones", columnDefinition = "TEXT", nullable = true)
     private String observations;
-    @Column(name = "json_datos", columnDefinition = "JSONB", nullable = false)
-    @Type(JsonBinaryType.class)
+
+    @Column(name = "json_datos", columnDefinition = "JSON", nullable = false)
+    @Type(JsonType.class)
     private String dataJson;
+
     //Relacion con tabla transversal catalogos (se deja tipo string para guardar el json)
-    @Column(name = "mecanismos_publicacion_cat_id", columnDefinition = "JSONB", nullable = false)
-    @Type(JsonBinaryType.class)
+    @Column(name = "mecanismos_publicacion_cat_id", columnDefinition = "JSON", nullable = false)
+    @Type(JsonType.class)
     private String publicationMechanism;
+
     //Relacion many to one con tipo_produccion
     @ManyToOne
     @JoinColumn(name = "tipo_produccion_id", nullable = false)

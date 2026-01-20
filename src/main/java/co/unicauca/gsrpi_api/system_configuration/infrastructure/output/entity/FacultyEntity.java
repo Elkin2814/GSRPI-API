@@ -12,17 +12,23 @@ public class FacultyEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "facultad_id")
     private long facultyId;
+    
     @Column(name = "nombre", columnDefinition = "TEXT", nullable = false)
     private String name;
+
     @Column(name = "ubicacion", columnDefinition = "TEXT", nullable = true)
     private String location;
+
     @Size(max = 10, min = 10)
     @Column(name = "telefono", nullable = true, length = 10)
     private String phone;
+
     @Column(name = "correo",columnDefinition = "TEXT", nullable = true)
     private String email;
+
     @Column(name = "direccion",columnDefinition = "TEXT", nullable = true)
     private String address;
+
     @Column(name = "abreviatura", columnDefinition = "TEXT", nullable = true)
     private String abbreviation;
 

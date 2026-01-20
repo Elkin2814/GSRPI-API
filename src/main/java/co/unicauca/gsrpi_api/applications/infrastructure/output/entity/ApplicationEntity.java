@@ -13,34 +13,35 @@ public class ApplicationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "solicitud_id")
     private Long applicationId;
-    @Column(name = "descripcion", columnDefinition = "TEXT", nullable = true)
+    @Column(name = "descripcion", columnDefinition = "TEXT")
     private String description;
     @Column(name = "numero_autores", nullable = false)
     private Integer numberOfAuthors;
-    @Column(name = "terminios_condiciones", columnDefinition = "BOOLEAN", nullable = false)
+    @Column(name = "terminios_condiciones", nullable = false)
     private Boolean termsAndConditions;
     //Relacion debil con la tabla catalogos que es transversal
     @Column(name = "tipo_solicitud_cat_id", nullable = false)
     private Long applicationTypeCatId;
-    @Column(name = "fecha_creacion", columnDefinition = "TIMESTAMPTZ", nullable = false)
+    @Column(name = "fecha_creacion", nullable = false)
     private LocalDateTime createAt;
-    @Column(name = "fecha_actualizacion", columnDefinition = "TIMESTAMPTZ", nullable = true)
+    @Column(name = "fecha_actualizacion", nullable = true)
     private LocalDateTime updateAt;
-    @Column(name = "fecha_envio_ciarp", columnDefinition = "TIMESTAMPTZ", nullable = true)
+    @Column(name = "fecha_envio_ciarp", nullable = true)
     private LocalDateTime ciarpSendDate;
     //Relacion many to one con departamento
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "departamento_id", nullable = false)
     private DepartmentEntity department;
 
     //Relacion one to one con solicitud
-    @OneToOne(mappedBy = "application", cascade = {CascadeType.ALL})
+    @OneToOne(mappedBy = "application", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ProductionEntity production;
 
     //Relacion many to one con estado_solicitud
     @ManyToOne
     @JoinColumn(name = "estado_solicitud_id", nullable = false)
     private StatusApplicationEntity applicationStatus;
+    
     //Relacion one to many con docente_solicitud (SI falla se debe cambiar )
     @OneToMany(mappedBy = "application", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     private List<TeacherApplicationEntity> teacherApplications;
